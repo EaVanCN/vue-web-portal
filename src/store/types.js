@@ -1,0 +1,6 @@
+export const PAGE_CONTENT_HIDE = 'PAGE_CONTENT_HIDE'
+export const PAGE_CONTENT_SHOW = 'PAGE_CONTENT_SHOW'
+
+
+
+

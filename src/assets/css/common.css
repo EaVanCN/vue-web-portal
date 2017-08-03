@@ -1,0 +1,46 @@
+@charset "utf-8";
+@import url(normalize.css); 
+html, body, div, p, ul, li, dl, dt, dd, h1, h2, h3, h4, h5, h6, form, input, select, button, textarea, iframe, table, th, td { margin: 0; padding: 0; }
+img { border: 0 none; vertical-align: top; }
+ul, li { list-style-type: none; }
+h1, h2, h3, h4, h5, h6 { font-size: 14px; }
+button { cursor: pointer; }
+body { background: #fff; color: #363636; line-height: 1.2; }
+a, a:link { color: #222; text-decoration: none; }
+a:visited { }
+a:active, a:hover { text-decoration: underline; }
+a:focus { outline: none; }
+
+.container { margin: 0 auto; }
+/*清除浮动*/
+.clearfix:after { content:""; display:block; clear:both; height:0; line-height:0; visibility:hidden; }
+.clearfix { zoom:1; }
+.fl { float: left; }
+.fr { float: right; }
+
+/*返回顶部*/
+/*toolBackTop*/
+.back-to {
+    bottom: 35px;
+    overflow:hidden;
+    position:fixed;
+    right:10px;
+    width:50px;
+    z-index:999;
+}
+.back-to .back-top {
+    width: 50px;
+    height:50px;
+    float: right;
+    display: block;
+    margin-left: 10px;
+    *+margin-left: 0;
+    background: url("../img/back-top.png") no-repeat scroll 0 0 transparent;
+    outline: 0 none;
+    text-indent: -9999em;
+}
+.back-to .back-top:hover {
+    background-position: -50px 0;
+}
+
+

@@ -1,0 +1,115 @@
+<template>
+	<div id="catetory" class="content2 container">
+		<leftNav></leftNav>	
+		<div class="contentLi fr">
+			<div class="catetorytitle">
+				<h2 class="fl">校园新闻</h2>
+				<div class="breadcrumb fr">
+					<a href="">首页</a>&gt;<a href="">中心概况</a>&gt;<a href="">校园新闻</a>
+				</div>
+			</div>
+			<div class="group_buying">
+				<ul>
+	          		<li >
+	            		<div class="dis_pi">
+							<a href="" target="_blank">
+								<img src="../assets/img/titpic.png">
+							</a>
+						</div>
+	            		<p class="tit"><span class="point fl"></span><a href="">2016京津冀白皮书发布</a><span class="date">2016-03-16</span></p>
+	            		<p class="abstract">京津冀白皮书发布京津冀白皮书发布京津冀白皮书发布京津冀白皮书发布京津冀白皮书发布京京津冀白皮书发布京津冀白皮书发布京津冀白皮书发布京津冀白皮书发布京津冀白皮书发布京津冀白皮书发布京津冀白皮书发布京津冀白皮书发布京津冀白皮书发布京津冀白皮书发布发布京津冀白业化大讲堂之云峰国贸举行第七期职业化大讲</p>
+	            		<div class="lang fl"></div>
+	          		</li>
+	          		<li>
+	            		<div class="dis_pi">
+							<a href="" target="_blank">
+								<img src="../assets/img/titpic.png">
+							</a>
+						</div>
+	            		<p class="tit"><span class="point fl"></span><a href="">云峰国贸举行第七期职业化大讲堂之 《郎眼盘点——变革中的2015》 </a><span class="date">2016-03-16</span></p>
+	            		<div class="lang fl"></div>
+	          		</li>
+	          		<li>
+	            		<div class="dis_pi">
+							<a href="" target="_blank">
+								<img src="../assets/img/titpic.png">
+							</a>
+						</div>
+	            		<p class="tit"><span class="point fl"></span><a href="">爱的360度——“大城市，小生活”第三季大型青年交友活动成</a><span class="date">2016-03-16</span></p>
+	            		<div class="lang fl"></div>
+	          		</li>
+	          		<li>
+	            		<div class="dis_pi">
+							<a href="" target="_blank">
+								<img src="../assets/img/titpic.png">
+							</a>
+						</div>
+	            		<p class="tit"><span class="point fl"></span><a href="">大城市，小生活”第</a><span class="date">2016-03-16</span></p>
+	            		<div class="lang fl"></div>
+	          		</li>
+	          		<li>
+	            		<div class="dis_pi">
+							<a href="" target="_blank">
+								<img src="../assets/img/titpic.png">
+							</a>
+						</div>
+	            		<p class="tit"><span class="point fl"></span><a href="">大城市，小生活”第三季三季大型青年交友价比最好的滋补品</a><span class="date">2016-03-16</span></p>
+	            		<div class="lang fl"></div>
+	          		</li>
+				</ul>
+			</div>
+			<div class="splitPage">
+				 <p>共162篇（<font color="red">1</font>/74）首页&nbsp;&nbsp;上一页&emsp;1&nbsp;2&nbsp;3&nbsp;4&emsp;下一页&nbsp;&nbsp;尾页</p> 
+			</div>
+		</div>
+	</div>
+</template>
+<script>
+	import leftNav from './LeftNav.vue'
+	export default{
+		components : {
+			'leftNav' : leftNav
+		}
+
+
+
+	}
+</script>
+<style scoped>
+	/* 二级页面开始 */
+	.content2{width:1200px;min-height: 575px;margin-top: 38px;}
+	
+	.contentLi{width:890px;margin-top:10px; margin-right: 10px;min-height: 575px;position: relative;}
+	.catetorytitle{height:43px;border-bottom: solid 1px #ccc;}
+	.catetorytitle h2 {font-family: "微软雅黑"; line-height:43px; color: #333; font-size: 18px; font-weight: bold; }
+	.breadcrumb{margin-top: 22px;line-height: 18px;font-size: 12px;}
+	.breadcrumb a{padding:0 5px;color:#A0A0A0;width:30px;}
+	.breadcrumb a:last-child{color:#666666;}
+
+	.group_buying{width:890px;font-family:Arial; }
+	.group_buying ul { margin: 0 10px 0; zoom:1; }
+	.group_buying ul li {border-bottom:1px dotted #ccc;position: relative; height: 36px; line-height:36px;}
+	.group_buying ul li img { width: 315px; height:237px; vertical-align:middle; }
+	.group_buying .pic_r { position: absolute; left: 345px; top:0; line-height: 24px }
+	.group_buying .pic_r em { color: #c00; display: block; font-style:normal; }
+	.group_buying .pic_r i { font-style: normal; display: block }
+	.group_buying ul li .tit {height: 40px;line-height: 40px; overflow: hidden;}
+	.group_buying ul li .abstract{display: none;width:500px;height:205px;padding:0 20px;text-indent: 2em;color:#525252;}
+	.group_buying ul li p .point{display:inline-block;width:7px;height:6px; background:url(../assets/img/point.png) no-repeat;margin:17px 10px 13px 5px;}
+	.group_buying ul li a { float:left;font-size: 15px;}
+	.group_buying ul li .date{ float: right;font-size: 13px;color:#A0A0A0;}
+	.group_buying ul li .lang{display: none; width:890px;height:10px;background: url(../assets/img/lang.png) no-repeat;}
+	.group_buying .dis_pi { display: none;}
+	.group_buying .dis_pi a{ display:block;border:1px solid #999;width: 325px;height: 247px;}
+	.group_buying .dis_pi img{margin: 5px;}
+	.group_buying ul .last{border-bottom:0;}
+	.group_buying ul li.on {height:260px;position:relative; line-height: 30px; margin-top: 10px;}
+	.group_buying ul li.on .tit {text-indent: 1em; font-size: 14px;font-weight:bold; height: 40px;line-height: 40px; overflow: hidden;}
+	.group_buying ul li.on .abstract{display:inline-block;}
+	.group_buying ul li.on p .point{display: none;}
+	.group_buying ul li.on{display:block;border-bottom:none;margin-bottom:24px;}
+	.group_buying .on .lang{display: block;margin-top: 12px;}
+	.group_buying .on .dis_pi {display:block;} 
+
+	.splitPage{width:100%;height:68px;line-height:68px;text-align:center;position: absolute;bottom:0;}
+</style>
