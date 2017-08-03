@@ -10,56 +10,19 @@
 			</div>
 			<div class="group_buying">
 				<ul>
-	          		<li >
-	            		<div class="dis_pi">
-							<a href="" target="_blank">
-								<img src="../assets/img/titpic.png">
-							</a>
-						</div>
-	            		<p class="tit"><span class="point fl"></span><a href="">2016京津冀白皮书发布</a><span class="date">2016-03-16</span></p>
-	            		<p class="abstract">京津冀白皮书发布京津冀白皮书发布京津冀白皮书发布京津冀白皮书发布京津冀白皮书发布京京津冀白皮书发布京津冀白皮书发布京津冀白皮书发布京津冀白皮书发布京津冀白皮书发布京津冀白皮书发布京津冀白皮书发布京津冀白皮书发布京津冀白皮书发布京津冀白皮书发布发布京津冀白业化大讲堂之云峰国贸举行第七期职业化大讲</p>
-	            		<div class="lang fl"></div>
-	          		</li>
-	          		<li>
-	            		<div class="dis_pi">
-							<a href="" target="_blank">
-								<img src="../assets/img/titpic.png">
-							</a>
-						</div>
-	            		<p class="tit"><span class="point fl"></span><a href="">云峰国贸举行第七期职业化大讲堂之 《郎眼盘点——变革中的2015》 </a><span class="date">2016-03-16</span></p>
-	            		<div class="lang fl"></div>
-	          		</li>
-	          		<li>
-	            		<div class="dis_pi">
-							<a href="" target="_blank">
-								<img src="../assets/img/titpic.png">
-							</a>
-						</div>
-	            		<p class="tit"><span class="point fl"></span><a href="">爱的360度——“大城市，小生活”第三季大型青年交友活动成</a><span class="date">2016-03-16</span></p>
-	            		<div class="lang fl"></div>
-	          		</li>
-	          		<li>
-	            		<div class="dis_pi">
-							<a href="" target="_blank">
-								<img src="../assets/img/titpic.png">
-							</a>
-						</div>
-	            		<p class="tit"><span class="point fl"></span><a href="">大城市，小生活”第</a><span class="date">2016-03-16</span></p>
-	            		<div class="lang fl"></div>
-	          		</li>
-	          		<li>
-	            		<div class="dis_pi">
-							<a href="" target="_blank">
-								<img src="../assets/img/titpic.png">
-							</a>
-						</div>
-	            		<p class="tit"><span class="point fl"></span><a href="">大城市，小生活”第三季三季大型青年交友价比最好的滋补品</a><span class="date">2016-03-16</span></p>
+					<li v-for="(item,index) in catetoryList">
+	            		<p class="tit"><span class="point fl"></span><a :href="'/index/catetory/aaa/article/'+item.id">{{item.title}}</a><span class="date">{{item.publicTime | normalTime}}</span></p>
 	            		<div class="lang fl"></div>
 	          		</li>
 				</ul>
 			</div>
 			<div class="splitPage">
-				 <p>共162篇（<font color="red">1</font>/74）首页&nbsp;&nbsp;上一页&emsp;1&nbsp;2&nbsp;3&nbsp;4&emsp;下一页&nbsp;&nbsp;尾页</p> 
+				 <p>共162篇（<font color="red">{{pageNum}}</font>/{{pageCount}}）
+				 <a @click="jumpNewPage(-2)" href="javascript:void(0)">首页</a>&nbsp;&nbsp;
+				 <a @click="jumpNewPage(-1)" href="javascript:void(0)">上一页</a>
+				  &emsp;<span v-for="index in pageCount" :class="[(pageNum == index) ? 'cur-page' : '']" >{{index}}</span>&emsp;
+				 <a @click="jumpNewPage(1)" href="javascript:void(0)">下一页</a>&nbsp;&nbsp;
+				 <a @click="jumpNewPage(2)" href="javascript:void(0)">尾页</a></p>
 			</div>
 		</div>
 	</div>
@@ -67,12 +30,69 @@
 <script>
 	import leftNav from './LeftNav.vue'
 	export default{
+		data : function(){
+			return {
+				catetoryList : [],
+				pageSize : 10,			//每页显示几篇文章，默认10篇
+				pageCount : 0			//总计多少页
+			}
+		},
+		computed : {
+			pageNum : function(){
+			  return this.$store.getters.pageNum
+			}
+		},
+		methods : {
+			jumpNewPage : function(pageState){
+				if(pageState == -1 && this.pageNum == 1){
+					alert('当前是第一页，没有更前了');
+					return;
+				};
+				if(pageState == 1 && this.pageNum == this.pageCount){
+					alert('当前是最后一页了，没有更后了');
+					return;
+				};
+				switch (pageState){
+					case -2:
+						this.$store.dispatch('pageNumberReset');
+				        break;
+					case -1:
+						this.$store.dispatch('pageNumberSub');
+				        break;
+				    case 1:
+						this.$store.dispatch('pageNumberAdd');
+				        break;
+				    case 2:
+						this.$store.dispatch('pageNumberReset');
+				        break;
+ 					default:
+				};
+				this.getCatetory();
+			},
+			getCatetory : function(targetPage){
+				var _this = this;
+				this.$http.get('/src/data/catetory.data').then(function(res){
+					_this.pageCount =Math.ceil(res.data.length/_this.pageSize);
+					var catetpryStartIndex = (_this.pageNum-1)*_this.pageSize;
+					var i = 0;
+					_this.catetoryList = [];
+					while(i < 10 && res.data[catetpryStartIndex]){
+						_this.catetoryList.push(res.data[catetpryStartIndex]);
+						catetpryStartIndex++;
+						i++;
+					}
+					console.log(_this.catetoryList);
+				}).catch(function(err){
+					console.log('获取页面文章列表出错',err);
+				})
+			}
+		},
+		mounted : function(){
+			this.getCatetory();
+		},
 		components : {
 			'leftNav' : leftNav
 		}
-
-
-
 	}
 </script>
 <style scoped>
@@ -112,4 +132,6 @@
 	.group_buying .on .dis_pi {display:block;} 
 
 	.splitPage{width:100%;height:68px;line-height:68px;text-align:center;position: absolute;bottom:0;}
+	.splitPage span{display:inline-block;width:16px;text-align: center;cursor: pointer;}
+	.splitPage span.cur-page{color:red;}
 </style>

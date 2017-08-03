@@ -39,7 +39,7 @@ export default {
   },
   watch:{
     $route : function(to,from){
-      console.log(to.path)
+      this.$store.dispatch('pageNumberReset');    //当路由改变时，将文章列表当前第几页的信息重置为第1页
       if(to.path != '/index'){
         this.$store.dispatch('pageContentHide');
       }else{

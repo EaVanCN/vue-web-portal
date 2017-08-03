@@ -20,7 +20,7 @@
 		methods : {
 			fetchData : function(){
 				var _this = this;
-				this.$http.get('/src/data/catetory.data').then(function(res){
+				this.$http.get('/src/data/catetoryCarousel.data').then(function(res){
 					_this.articleData = res.data;
 				}).catch(function(err){
 					console.log('请求轮播图数据出错');

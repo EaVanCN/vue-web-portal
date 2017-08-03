@@ -2,7 +2,8 @@ import getters from './getters'
 import * as types from './types'
 
 const state = {
-	content : true
+	content : true,
+	pageNum : 1
 }
 
 const mutations = {
@@ -11,6 +12,15 @@ const mutations = {
 	},
 	[types.PAGE_CONTENT_SHOW](state){
 		state.content = true;
+	},
+	[types.PAGE_NUMBER_RESET](state){
+		state.pageNum = 1;
+	},
+	[types.PAGE_NUMBER_ADD](state){
+		state.pageNum++;
+	},
+	[types.PAGE_NUMBER_SUB](state){
+		state.pageNum--;
 	}
 }
 
