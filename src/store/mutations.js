@@ -21,7 +21,14 @@ const mutations = {
 	},
 	[types.PAGE_NUMBER_SUB](state){
 		state.pageNum--;
+	},
+	[types.PAGE_NUMBER_CHANGE](state,curPageNum){
+		state.pageNum = curPageNum;
+	},
+	[types.PAGE_NUMBER_LAST](state,pageTottleNum){
+		state.pageNum = pageTottleNum;
 	}
+
 }
 
 export default {

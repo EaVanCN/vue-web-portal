@@ -241,7 +241,7 @@ $(function(){
 .xiangqing a{color:#950600;}
 
 .contentB .left .news{float:right;width:410px;height:180px;}
-.sec_title{height:27px;width:210px;border-bottom: 1px solid #ddd;line-height: 27px;}
+.sec_title{height:27px;width:300px;border-bottom: 1px solid #ddd;line-height: 27px;}
 .sec_title h4{font-size: 16px;font-family:'Microsoft Yahei';}
 .contentB .left .news_text p{text-indent: 2em; margin-top:5px;line-height: 30px;font-size: 14px;font-family:'宋体';}
 .news_list{margin-top: 10px;float:left;width:100%;height:95px;}

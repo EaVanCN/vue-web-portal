@@ -17,12 +17,12 @@
 				</ul>
 			</div>
 			<div class="splitPage">
-				 <p>共162篇（<font color="red">{{pageNum}}</font>/{{pageCount}}）
-				 <a @click="jumpNewPage(-2)" href="javascript:void(0)">首页</a>&nbsp;&nbsp;
-				 <a @click="jumpNewPage(-1)" href="javascript:void(0)">上一页</a>
-				  &emsp;<span v-for="index in pageCount" :class="[(pageNum == index) ? 'cur-page' : '']" >{{index}}</span>&emsp;
-				 <a @click="jumpNewPage(1)" href="javascript:void(0)">下一页</a>&nbsp;&nbsp;
-				 <a @click="jumpNewPage(2)" href="javascript:void(0)">尾页</a></p>
+				 <p>共{{tottleArticleNum}}篇（<font color="red">{{pageNum}}</font>/{{pageCount}}）
+				 <a @click="jumpNewPage(-4)" href="javascript:void(0)">首页</a>&nbsp;&nbsp;
+				 <a @click="!(pageNum == 1) && jumpNewPage(-3)" :class="[(pageNum == 1) ? 'disabled-link' : '']" href="javascript:void(0)">上一页</a>
+				  &emsp;<span v-for="index in pageCount" @click="jumpNewPage(index)" :class="[(pageNum == index) ? 'cur-page' : '']" >{{index}}</span>&emsp;
+				 <a @click="!(pageNum == pageCount) && jumpNewPage(-2)" :class="[(pageNum == pageCount) ? 'disabled-link' : '']" href="javascript:void(0)">下一页</a>&nbsp;&nbsp;
+				 <a @click="jumpNewPage(-1)" href="javascript:void(0)">尾页</a></p>
 			</div>
 		</div>
 	</div>
@@ -34,7 +34,9 @@
 			return {
 				catetoryList : [],
 				pageSize : 10,			//每页显示几篇文章，默认10篇
-				pageCount : 0			//总计多少页
+				pageCount : 0,			//总计多少页
+				tottleArticleNum : 0,	//文章总数
+				isAvailable : true
 			}
 		},
 		computed : {
@@ -44,34 +46,38 @@
 		},
 		methods : {
 			jumpNewPage : function(pageState){
-				if(pageState == -1 && this.pageNum == 1){
+				/*旧的判定是否还有更前页的方法
+				if(pageState == -3 && this.pageNum == 1){
 					alert('当前是第一页，没有更前了');
 					return;
 				};
-				if(pageState == 1 && this.pageNum == this.pageCount){
+				if(pageState == -2 && this.pageNum == this.pageCount){
 					alert('当前是最后一页了，没有更后了');
 					return;
 				};
-				switch (pageState){
-					case -2:
+				*/
+				switch (pageState){		//-4表示首页，-3表示上一页，-2表示下一页，-1表示末页
+					case -4:
 						this.$store.dispatch('pageNumberReset');
 				        break;
-					case -1:
+					case -3:
 						this.$store.dispatch('pageNumberSub');
 				        break;
-				    case 1:
+				    case -2:
 						this.$store.dispatch('pageNumberAdd');
 				        break;
-				    case 2:
-						this.$store.dispatch('pageNumberReset');
+				    case -1:
+						this.$store.dispatch('pageNumberLast',this.pageCount);
 				        break;
  					default:
+ 						this.$store.dispatch('pageNumberchange',pageState);
 				};
 				this.getCatetory();
 			},
 			getCatetory : function(targetPage){
 				var _this = this;
 				this.$http.get('/src/data/catetory.data').then(function(res){
+					_this.tottleArticleNum = res.data.length;
 					_this.pageCount =Math.ceil(res.data.length/_this.pageSize);
 					var catetpryStartIndex = (_this.pageNum-1)*_this.pageSize;
 					var i = 0;
@@ -81,7 +87,6 @@
 						catetpryStartIndex++;
 						i++;
 					}
-					console.log(_this.catetoryList);
 				}).catch(function(err){
 					console.log('获取页面文章列表出错',err);
 				})
@@ -134,4 +139,6 @@
 	.splitPage{width:100%;height:68px;line-height:68px;text-align:center;position: absolute;bottom:0;}
 	.splitPage span{display:inline-block;width:16px;text-align: center;cursor: pointer;}
 	.splitPage span.cur-page{color:red;}
+	a.disabled-link{cursor: not-allowed;color:#aaa;}
+	a.disabled-link:hover{text-decoration: none;}
 </style>

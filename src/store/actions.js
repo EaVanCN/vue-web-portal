@@ -15,5 +15,11 @@ export default {
 	},
 	pageNumberSub : ({commit}) => {
 		commit(types.PAGE_NUMBER_SUB);
+	},
+	pageNumberLast: ({commit},pageTottleNum) => {
+		commit(types.PAGE_NUMBER_LAST,pageTottleNum);
+	},
+	pageNumberchange :  ({commit},curPageNum) => {
+		commit(types.PAGE_NUMBER_CHANGE,curPageNum);
 	}
 }
