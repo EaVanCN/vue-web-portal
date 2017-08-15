@@ -35,7 +35,7 @@ export default{
 	},
 	mounted : function(){
 		this.getNav();
-	}	
+	}
 }
 </script>
 <style scoped>

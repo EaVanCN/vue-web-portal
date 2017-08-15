@@ -12,6 +12,21 @@
 					<div class="more"><a href="">MORE+</a></div>
 				</div>
 				<div class="main">
+					<div class="focusBox2">
+						<ul class="pic">
+								<li><a href="#"><img src="../assets/img/1.png"/></a></li>
+								<li><a href="#"><img src="../assets/img/1.png"/></a></li>
+								<li><a href="#"><img src="../assets/img/1.png"/></a></li>
+								<li><a href="#"><img src="../assets/img/1.png"/></a></li>
+						</ul>
+						<div class="txt-bg"></div>
+						<ul class="num">
+							<li><a></a><span></span></li>
+							<li><a></a><span></span></li>
+							<li><a></a><span></span></li>
+							<li><a></a><span></span></li>
+						</ul>
+					</div>
 					<div class="news">
 						<div class="sec_title">
 							<h4>{{tzgg[0].title}}</h4>
@@ -179,30 +194,22 @@
 		},
 		components : {
 			carousel : Carousel
+		},
+		updated : function(){
+			//增加jquery的操作,只有在updated之后，页面才被渲染出来，也才能使用jquery对样式绑定事件
+			$(".cop").hover(function () {
+			    $(this).find("span").stop().animate({
+			        bottom: "0"
+			    }, 150)
+			}, function () {
+			    $(this).find("span").stop().animate({
+			        bottom: "-40px"
+			    }, 150)
+			});
+			$(".focusBox2").slide({ titCell:".num li", mainCell:".pic",effect:"fold", autoPlay:true,trigger:"click",interTime:4000,
+				});
 		}
 	};
-$(function(){
-	
-    $(".cop").hover(function () {
-        $(this).find("span").stop().animate({
-            bottom: "0"
-        }, 150)
-    }, function () {
-        $(this).find("span").stop().animate({
-            bottom: "-40px"
-        }, 150)
-    })
-
-     $(".ladyScroll dl").hover(function () {
-        $(this).find("dd,span").stop().animate({
-            bottom: "0"
-        }, 200)
-    }, function () {
-        $(this).find("dd,span").stop().animate({
-            bottom: "-45px"
-        }, 200)
-    })
-})
 </script>
 <style scoped>
 

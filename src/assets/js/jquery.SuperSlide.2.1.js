@@ -1,4 +1,3 @@
-import jQuery from 'jquery'
 /*!
  * SuperSlide v2.1 
  * 轻松解决网站大部分特效展示问题
