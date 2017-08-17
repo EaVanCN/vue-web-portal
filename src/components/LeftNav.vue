@@ -2,22 +2,63 @@
 	<div id="leftNav">
 		<aside class="left_nav fl">
 			<div class="nav_title">
-				<h3 class="fl"><a>中心概况</a></h3>YUN FENG
+				<h3 class="fl"><a>{{topCatetory}}</a></h3>{{curCatetory}}
 			</div>
 			<ul>
-				<li class="active"><a href=""><span class="fl"></span>校园新闻</a></li>
-				<li><a href=""><span class="fl"></span>校园动态</a></li>
-				<li><a href=""><span class="fl"></span>校园生活</a></li>
-				<li><a href=""><span class="fl"></span>公告信息</a></li>
-				<li><a href=""><span class="fl"></span>院校刊物</a></li>
-				<li><a href=""><span class="fl"></span>院校掠影</a></li>
+				<li :class="{'active':value.subLink==curCatetory}" v-for="(value, index) in secCatetory" >
+				<router-link :to="'/index/catetory/'+value.subLink">
+					<span class="fl"></span>{{value.subName}}
+				</router-link>
+				</li>
 			</ul>
 		</aside>
 	</div>
 </template>
 <script>
 	export default{
-
+		data : function(){
+			return {
+				allNavData : [],
+				curCatetory : "",
+				topCatetory : "",
+				secCatetory : []
+			}
+		},
+		methods : {
+			getLeftNav : function(){
+				var _this = this;
+				this.$http.get('/src/data/nav.data').then(function(res){
+					_this.allNavData = res.data;
+					_this.updateLeftByUrl();
+				}).catch(function(err){
+					console.log('请求左侧导航数据出错',err);
+				})
+			},
+			updateLeftByUrl : function(){
+				//根据导航中的参数来决定左侧导航中的内容
+				this.curCatetory = this.$route.params.catetoryId;
+				//由于知道最多二级导航，这里可以这么写
+				for(var index in this.allNavData){
+					//如果链接是一级栏目
+					if(this.allNavData[index].link == this.curCatetory){
+						this.topCatetory = this.allNavData[index].name;
+					}
+					//如果链接是二级栏目
+					if(this.allNavData[index].havesub){
+						for(var index2 in this.allNavData[index].sub){
+							if(this.allNavData[index].sub[index2].subLink == this.curCatetory){
+								this.secCatetory = this.allNavData[index].sub;
+								this.topCatetory = this.allNavData[index].name;
+							}
+						}
+					}
+				}
+				
+			}
+		},
+		mounted : function(){
+			this.getLeftNav();		
+		}
 	}
 </script>
 <style>	

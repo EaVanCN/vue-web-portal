@@ -14,17 +14,11 @@
 				<div class="main">
 					<div class="focusBox2">
 						<ul class="pic">
-								<li><a href="#"><img src="../assets/img/1.png"/></a></li>
-								<li><a href="#"><img src="../assets/img/1.png"/></a></li>
-								<li><a href="#"><img src="../assets/img/1.png"/></a></li>
-								<li><a href="#"><img src="../assets/img/1.png"/></a></li>
+							<li v-for="index in 6"><a href="#"><img :src="tzgg[index+1].pic"/></a></li>
 						</ul>
 						<div class="txt-bg"></div>
 						<ul class="num">
-							<li><a></a><span></span></li>
-							<li><a></a><span></span></li>
-							<li><a></a><span></span></li>
-							<li><a></a><span></span></li>
+							<li v-for="index in 6"><a></a><span></span></li>
 						</ul>
 					</div>
 					<div class="news">
@@ -185,7 +179,7 @@
 				this.$http.get('/src/data/catetory.data').then(function(res){
 					_this.tzgg = res.data;
 				}).catch(function(err){
-					console.log('获取通知公告数据出错')
+					console.log('获取通知公告数据出错');
 				})
 			}
 		},
