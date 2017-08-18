@@ -74,7 +74,7 @@
 				};
 				this.getCatetory();
 			},
-			getCatetory : function(targetPage){
+			getCatetory : function(){
 				var _this = this;
 				this.$http.get('/src/data/catetory.data').then(function(res){
 					_this.tottleArticleNum = res.data.length;
@@ -82,7 +82,7 @@
 					var catetpryStartIndex = (_this.pageNum-1)*_this.pageSize;
 					var i = 0;
 					_this.catetoryList = [];
-					while(i < 10 && res.data[catetpryStartIndex]){
+					while(i < _this.pageSize && res.data[catetpryStartIndex]){
 						_this.catetoryList.push(res.data[catetpryStartIndex]);
 						catetpryStartIndex++;
 						i++;
