@@ -2,7 +2,7 @@
 	<div id="leftNav">
 		<aside class="left_nav fl">
 			<div class="nav_title">
-				<h3 class="fl"><a>{{topCatetory}}</a></h3>{{curCatetory}}
+				<h3 class="fl"><a>{{topCatetory}}</a></h3>{{topCatetoryLink | toUpperCase}}
 			</div>
 			<ul>
 				<li :class="{'active':value.subLink==curCatetory}" v-for="(value, index) in secCatetory" >
@@ -21,9 +21,15 @@
 				allNavData : [],
 				curCatetory : "",
 				topCatetory : "",
+				topCatetoryLink : "",
 				secCatetory : []
 			}
 		},
+		watch: {
+    		// 如果路由有变化，会再次执行该方法
+	    	'$route': 'updateLeftByUrl'
+		},
+
 		methods : {
 			getLeftNav : function(){
 				var _this = this;
@@ -35,13 +41,19 @@
 				})
 			},
 			updateLeftByUrl : function(){
+				//首先清空有关左侧导航的数据
+				this.curCatetory = "";
+				this.topCatetory = "";
+				this.topCatetoryLink = "";
+				this.secCatetory = [];
 				//根据导航中的参数来决定左侧导航中的内容
 				this.curCatetory = this.$route.params.catetoryId;
-				//由于知道最多二级导航，这里可以这么写
+				//由于知道最多二级导航，这里可以这么写,倘若有后台，可以传参直接请求对应数据
 				for(var index in this.allNavData){
 					//如果链接是一级栏目
 					if(this.allNavData[index].link == this.curCatetory){
 						this.topCatetory = this.allNavData[index].name;
+						this.topCatetoryLink = this.allNavData[index].link;
 					}
 					//如果链接是二级栏目
 					if(this.allNavData[index].havesub){
@@ -49,6 +61,7 @@
 							if(this.allNavData[index].sub[index2].subLink == this.curCatetory){
 								this.secCatetory = this.allNavData[index].sub;
 								this.topCatetory = this.allNavData[index].name;
+								this.topCatetoryLink = this.allNavData[index].link;
 							}
 						}
 					}
