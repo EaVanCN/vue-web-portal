@@ -5,7 +5,7 @@
 	"author" : "彭逸帆",
 	"abstractContent" : "进职业教育现代化座谈会12月2日在京召开。中共常委、国务院代化座谈会12月2日在京召开。中共常委、国务院总理李克强作出重要批示。批示指出：加快中央",
 	"publicTime" : "1480854958341",
-	"pic" : "../src/assets/img/banner.png"
+	"pic" : "/static/img/banner.png"
 },{
 	"moduleId" : "1122",
 	"id" : "2015111024",
@@ -13,7 +13,7 @@
 	"author" : "彭逸帆",
 	"abstractContent" : "进职业教育现代化座谈会12月2日在京召开。中共常委、国务院代化座谈会12月2日在京召开。中共常委、国务院总理李克强作出重要批示。批示指出：加快中央",
 	"publicTime" : "1480854952144",
-	"pic" : "../src/assets/img/banner.png"
+	"pic" : "/static/img/banner.png"
 },{
 	"moduleId" : "1122",
 	"id" : "2015111025",
@@ -21,7 +21,7 @@
 	"author" : "彭逸帆",
 	"abstractContent" : "进职业教育现代化座谈会12月2日在京召开。中共常委、国务院代化座谈会12月2日在京召开。中共常委、国务院总理李克强作出重要批示。批示指出：加快中央",
 	"publicTime" : "1480854123804",
-	"pic" : "../src/assets/img/banner.png"
+	"pic" : "/static/img/banner.png"
 },{
 	"moduleId" : "1122",
 	"id" : "2015111026",
@@ -29,7 +29,7 @@
 	"author" : "彭逸帆",
 	"abstractContent" : "进职业教育现代化座谈会12月2日在京召开。中共常委、国务院代化座谈会12月2日在京召开。中共常委、国务院总理李克强作出重要批示。批示指出：加快中央",
 	"publicTime" : "1480854952214",
-	"pic" : "../src/assets/img/banner.png"
+	"pic" : "/static/img/banner.png"
 },{
 	"moduleId" : "1122",
 	"id" : "2015111027",
@@ -37,5 +37,5 @@
 	"author" : "彭逸帆",
 	"abstractContent" : "进职业教育现代化座谈会12月2日在京召开。中共常委、国务院代化座谈会12月2日在京召开。中共常委、国务院总理李克强作出重要批示。批示指出：加快中央",
 	"publicTime" : "1480854958842",
-	"pic" : "../src/assets/img/banner.png"
+	"pic" : "/static/img/banner.png"
 }]

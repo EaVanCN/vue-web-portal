@@ -76,7 +76,7 @@
 </script>
 <style>	
 	.left_nav{width:250px;}
-	.left_nav .nav_title{height:78px;line-height:88px;background: url(../assets/img/nav_title.png) no-repeat;font-size: 10px;color:#9C9C9C;}
+	.left_nav .nav_title{height:78px;line-height:88px;background: url(/static/img/nav_title.png) no-repeat;font-size: 10px;color:#9C9C9C;}
 	.left_nav .nav_title h3{line-height:78px;font-size:18px;margin: 0 10px 0 10px;}
 	.left_nav .nav_title h3 a:hover{text-decoration: none;}
 	.left_nav ul li{padding-left:119px;height:48px;line-height:48px;border-bottom:1px dotted #4B4B4B;}
@@ -85,5 +85,5 @@
 	.left_nav ul li a:hover{cursor: pointer;text-decoration: none;}
 	.left_nav ul li.active{padding-left:0;border-bottom:none;background:#930400;}
 	.left_nav ul li.active a{color:white;}
-	.left_nav ul li.active span{display:block;width:10px;height:11px;background: url(../assets/img/nav_arrow.png) no-repeat;margin:20px 15px 0 94px;}
+	.left_nav ul li.active span{display:block;width:10px;height:11px;background: url(/static/img/nav_arrow.png) no-repeat;margin:20px 15px 0 94px;}
 </style>

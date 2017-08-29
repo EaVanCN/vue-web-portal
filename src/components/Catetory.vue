@@ -120,10 +120,10 @@
 	.group_buying .pic_r i { font-style: normal; display: block }
 	.group_buying ul li .tit {height: 40px;line-height: 40px; overflow: hidden;}
 	.group_buying ul li .abstract{display: none;width:500px;height:205px;padding:0 20px;text-indent: 2em;color:#525252;}
-	.group_buying ul li p .point{display:inline-block;width:7px;height:6px; background:url(../assets/img/point.png) no-repeat;margin:17px 10px 13px 5px;}
+	.group_buying ul li p .point{display:inline-block;width:7px;height:6px; background:url(/static/img/point.png) no-repeat;margin:17px 10px 13px 5px;}
 	.group_buying ul li a { float:left;font-size: 15px;}
 	.group_buying ul li .date{ float: right;font-size: 13px;color:#A0A0A0;}
-	.group_buying ul li .lang{display: none; width:890px;height:10px;background: url(../assets/img/lang.png) no-repeat;}
+	.group_buying ul li .lang{display: none; width:890px;height:10px;background: url(/static/img/lang.png) no-repeat;}
 	.group_buying .dis_pi { display: none;}
 	.group_buying .dis_pi a{ display:block;border:1px solid #999;width: 325px;height: 247px;}
 	.group_buying .dis_pi img{margin: 5px;}

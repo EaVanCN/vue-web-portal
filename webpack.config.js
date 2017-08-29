@@ -73,11 +73,6 @@ if (process.env.NODE_ENV === 'production') {
     }),
     new webpack.LoaderOptionsPlugin({
       minimize: true
-    }),
-    new webpack.optimize.CommonsChunkPlugin('common.js'),
-    new webpack.ProvidePlugin({
-     jQuery: "jquery",
-     $: "jquery"
- })
+    })
   ])
 }

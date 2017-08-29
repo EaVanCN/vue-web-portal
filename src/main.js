@@ -3,6 +3,8 @@ import VueRouter from 'Vue-router'
 import axios from 'axios'
 
 import $ from './assets/jquery-vendor.js'
+
+import './assets/libs/jquery.SuperSlide.2.1.js'
 import ElementUI from 'element-ui'
 import 'element-ui/lib/theme-default/index.css'
 

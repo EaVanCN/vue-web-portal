@@ -14,7 +14,7 @@
 				<div class="main">
 					<div class="focusBox2">
 						<ul class="pic">
-							<li v-for="index in 6"><a href="#"><img :src="tzgg[index+1].pic"/></a></li>
+							<li v-for="index in 6"><a href="#"><img :src="tzgg[index+1] && tzgg[index+1].pic"/></a></li>
 						</ul>
 						<div class="txt-bg"></div>
 						<ul class="num">
@@ -23,17 +23,17 @@
 					</div>
 					<div class="news">
 						<div class="sec_title">
-							<h4>{{tzgg[0].title}}</h4>
+							<h4>{{tzgg[0] && tzgg[0].title}}</h4>
 						</div>
 						<div class="news_text">
-							<p>{{tzgg[0].abstractContent}}
+							<p>{{tzgg[0] && tzgg[0].abstractContent}}
 							<span class="xiangqing fr">【<a href="/index/catetory/aaa/article/bbb">详情</a>】</span>
 							</p>
 						</div>
 					</div>
 					<div class="news_list">
 						<ul>
-							<li v-for="index in 6">&gt;<a href="">{{tzgg[index+1].title}}</a><span>[{{tzgg[index+1].publicTime | normalTime}}]</span></li>
+							<li v-for="index in 6">&gt;<a href="">{{tzgg[index+1] && tzgg[index+1].title}}</a><span>[{{tzgg[index+1] && tzgg[index+1].publicTime | normalTime}}]</span></li>
 						</ul>
 					</div>
 				</div>
@@ -65,8 +65,8 @@
 								</div>
 							</div>
 							<div class="buttons fl">
-								<button class="login fl" type="submit"><span class="loginfor7">登 录</span><span class="arrow fr"><img src="../assets/img/login_icon.png"></span></button>
-								<button class="prologin">专家登录<span class="arrow fr"><img src="../assets/img/login_icon.png"></span></button>
+								<button class="login fl" type="submit"><span class="loginfor7">登 录</span><span class="arrow fr"><img src="/static/img/login_icon.png"></span></button>
+								<button class="prologin">专家登录<span class="arrow fr"><img src="/static/img/login_icon.png"></span></button>
 							</div>
 							<div class="regist fr">
 								<span>没有账号？<a href="">点击注册</a></span>
@@ -86,7 +86,7 @@
 				</div>
 				<div class="main">
 					<div class="pic fl">
-						<a href=""><img src="../assets/img/pic.png"></a>
+						<a href=""><img src="/static/img/pic.png"></a>
 						<div class="doc">
 							<a class="docbtn fl" href="#">
 								<div class="A"></div>
@@ -141,23 +141,23 @@
 			</div>
 			<div class="main">
 				<div class="cop cop1">
-					<img src="../assets/img/cop.png" />
+					<img src="/static/img/cop.png" />
 					<span class="pic_tit"><a href="">首都经济贸易大学</a></span>
 				</div>
 				<div class="cop cop2">
-					<img src="../assets/img/cop.png" />
+					<img src="/static/img/cop.png" />
 					<span class="pic_tit"><a href="">首都经济贸易大学</a></span>
 				</div>
 				<div class="cop cop3">
-					<img src="../assets/img/cop.png" />
+					<img src="/static/img/cop.png" />
 					<span class="pic_tit"><a href="">首都经济贸易大学</a></span>
 				</div>
 				<div class="cop cop4">
-					<img src="../assets/img/cop.png" />
+					<img src="/static/img/cop.png" />
 					<span class="pic_tit"><a href="">首都经济贸易大学</a></span>
 				</div>
 				<div class="cop cop5">
-					<img src="../assets/img/cop.png" />
+					<img src="/static/img/cop.png" />
 					<span class="pic_tit"><a href="">首都经济贸易大学</a></span>
 				</div>
 			</div>
@@ -183,14 +183,14 @@
 				})
 			}
 		},
-		mounted : function(){
+		created : function(){
 			this.getTZGG();
 		},
 		components : {
 			carousel : Carousel
 		},
-		updated : function(){
-			//增加jquery的操作,只有在updated之后，页面才被渲染出来，也才能使用jquery对样式绑定事件
+		mounted : function(){
+			//增加jquery的操作,只有在updated之后，也才能使用jquery对样式绑定事件
 			$(".cop").hover(function () {
 			    $(this).find("span").stop().animate({
 			        bottom: "0"
@@ -200,8 +200,14 @@
 			        bottom: "-40px"
 			    }, 150)
 			});
-			$(".focusBox2").slide({ titCell:".num li", mainCell:".pic",effect:"fold", autoPlay:true,trigger:"click",interTime:4000,
-				});
+			$(".focusBox2").slide({ 
+				titCell:".num li", 
+				mainCell:".pic",
+				effect:"fold", 
+				autoPlay:true,
+				trigger:"click",
+				interTime:4000,
+			});
 		}
 	};
 </script>
@@ -211,16 +217,16 @@
 .focusBox {position: relative; width:1180px; height:310px;  padding-top: 5px;z-index:1;}
 .focusBox .pic{ position:relative; z-index:0; }
 .focusBox .pic img { width:1180px; height:310px; display: block; }
-.focusBox .hd {background: url(../assets/img/slider_bg.png) no-repeat;margin:0 auto;position:absolute;left:550px;bottom:0;text-align: center; font-size:0; z-index:1; height:30px;width:120px; *+bottom:0;}
-.focusBox .hd li{margin: 7px 5px; background: url(../assets/img/white.png) no-repeat; width:15px; height: 15px;cursor: pointer;display:inline-block; *display:inline; zoom:1;  _background: url(../assets/img/white.png) no-repeat;}
-.focusBox .hd li.on{background: url(../assets/img/black.png) no-repeat;}
-.focusBox .prev{ width: 40px; height: 40px; background: url(../assets/img/left.png) no-repeat 0 0; position: absolute; top: 45%; left:-10px; z-index: 10; cursor: pointer; text-indent: -9999px; filter:alpha(opacity=50);opacity:0.5;  }
-.focusBox .next { width: 40px; height: 40px; background: url(../assets/img/right.png) no-repeat 0 0; position: absolute; top: 45%; right:-10px; z-index: 10; cursor: pointer; text-indent: -9999px; filter:alpha(opacity=50);opacity:0.5;  }
+.focusBox .hd {background: url(/static/img/slider_bg.png) no-repeat;margin:0 auto;position:absolute;left:550px;bottom:0;text-align: center; font-size:0; z-index:1; height:30px;width:120px; *+bottom:0;}
+.focusBox .hd li{margin: 7px 5px; background: url(/static/img/white.png) no-repeat; width:15px; height: 15px;cursor: pointer;display:inline-block; *display:inline; zoom:1;  _background: url(/static/img/white.png) no-repeat;}
+.focusBox .hd li.on{background: url(/static/img/black.png) no-repeat;}
+.focusBox .prev{ width: 40px; height: 40px; background: url(/static/img/left.png) no-repeat 0 0; position: absolute; top: 45%; left:-10px; z-index: 10; cursor: pointer; text-indent: -9999px; filter:alpha(opacity=50);opacity:0.5;  }
+.focusBox .next { width: 40px; height: 40px; background: url(/static/img/right.png) no-repeat 0 0; position: absolute; top: 45%; right:-10px; z-index: 10; cursor: pointer; text-indent: -9999px; filter:alpha(opacity=50);opacity:0.5;  }
 .focusBox .prev:hover,
 .focusBox .next:hover { filter:alpha(opacity=80) !important;opacity:0.8 !important;}
 
 .title{height:36px;border-bottom:3px solid #B40E02;}
-.title .title_name{float:left;width:120px;height:36px;background:url(../assets/img/title_bg.png);color:#fff;line-height:36px;}
+.title .title_name{float:left;width:120px;height:36px;background:url(/static/img/title_bg.png);color:#fff;line-height:36px;}
 .title .title_name h3{display:block; margin-left:40px;font-size: 17px;font-family:'Microsoft Yahei';}
 .title .more{float:right;width:45px;height:15px;margin-top:16px;margin-right:20px;}
 .title .more a{font-size: 12px;color:#999;}
@@ -233,10 +239,10 @@
 .focusBox2 .pic img { width: 370px; height: 180px; display: block; }
 .focusBox2 .txt-bg { position: absolute; bottom: 0; z-index: 1; height: 20px; width:100%;  background: #000; filter: alpha(opacity=50); opacity: 0.5; overflow: hidden; }
 .focusBox2 .num {position: absolute; z-index: 3; bottom: 5px; right: 8px; }
-.focusBox2 .num li{ background:url(../assets/img/dot_hui.png)  no-repeat; float: left; position: relative; width: 8px; height: 8px;overflow: hidden; text-align: center; margin-right:5px; cursor: pointer; }
+.focusBox2 .num li{ background:url(/static/img/dot_hui.png)  no-repeat; float: left; position: relative; width: 8px; height: 8px;overflow: hidden; text-align: center; margin-right:5px; cursor: pointer; }
 .focusBox2 .num li a,.focusBox .num li span { position: absolute; z-index: 2; display: block; color: white; width: 100%; height: 100%; top: 0; left: 0; text-decoration: none;}
 .focusBox2 .num li span { z-index: 1; background: black; filter: alpha(opacity=50); opacity: 0.5; }
-.focusBox2 .num li.on,.focusBox .num a:hover{ background:url(../assets/img/dot_white.png) no-repeat;}
+.focusBox2 .num li.on,.focusBox .num a:hover{ background:url(/static/img/dot_white.png) no-repeat;}
 
 .xiangqing{font-size: 15px;color:red;*margin-top:-30px;color:#950600;}
 .xiangqing a{color:#950600;}
@@ -257,8 +263,8 @@
 .login-form{width:240px;}
 .login-form label{display: block;height:30px;line-height:30px;}
 .inputuser,.inputpwd{width:240px;height:34px;line-height:34px;position:relative;}
-.inputuser{background:url(../assets/img/login_user.png);}
-.inputpwd{background:url(../assets/img/login-pwd.png);}
+.inputuser{background:url(/static/img/login_user.png);}
+.inputpwd{background:url(/static/img/login-pwd.png);}
 #userName,#userPassword{position:absolute;left:37px;top:2px;width:200px;height:30px;border:none;height:25px\9;top:6px\9;}
 .remember{margin-top: 17px;}
 .rememberme{width:140px;}
@@ -282,10 +288,10 @@
 .doc .docbtn{display: block; text-align:center;width:120px;height:80px;border:1px solid #7C7D7F;border-radius: 5px;}
 .doc .docbtn:hover{text-decoration:none;}
 .doc .docbtn div{display: inline-block; width:46px;height:46px;margin:5px 0;}
-.doc .docbtn .A{background:url(../assets/img/icon_zhicheng_hui.png)}
-.doc .docbtn:hover .A{background:url(../assets/img/icon_zhicheng_red.png)}
-.doc .docbtn .B{background:url(../assets/img/icon_shenbao_hui.png)}
-.doc .docbtn:hover .B{background:url(../assets/img/icon_shenbao_red.png)}
+.doc .docbtn .A{background:url(/static/img/icon_zhicheng_hui.png)}
+.doc .docbtn:hover .A{background:url(/static/img/icon_zhicheng_red.png)}
+.doc .docbtn .B{background:url(/static/img/icon_shenbao_hui.png)}
+.doc .docbtn:hover .B{background:url(/static/img/icon_shenbao_red.png)}
 .contentC .left .main .txt{width:415px;height:260px;}
 .contentC .left .main .txt p{text-indent: 2em; line-height: 30px;font-size: 14px;font-family:'宋体';}
 
@@ -295,8 +301,8 @@
 .contentD{width:1200px;height:260px;margin-top:20px;}
 .contentD .main{width:1200px;}
 .ladyScroll{width:1150px;height:200;position:relative;margin-top: 20px;}
-.ladyScroll .prev{width:23px;height:40px;position:absolute;top:75px; left:-23px; z-index:100; cursor:pointer; background:url(../assets/img/2340left.png) no-repeat;}
-.ladyScroll .next{width:26px;height:46px;position:absolute;top:75px; right:-26px; z-index:100; cursor:pointer; background:url(../assets/img/2646right.png) no-repeat;}
+.ladyScroll .prev{width:23px;height:40px;position:absolute;top:75px; left:-23px; z-index:100; cursor:pointer; background:url(/static/img/2340left.png) no-repeat;}
+.ladyScroll .next{width:26px;height:46px;position:absolute;top:75px; right:-26px; z-index:100; cursor:pointer; background:url(/static/img/2646right.png) no-repeat;}
 .ladyScroll .prev:hover{filter:alpha(opacity=90) !important;opacity:0.9 !important;}
 .ladyScroll .next:hover{filter:alpha(opacity=90) !important;opacity:0.9 !important;}
 .ladyScroll .scrollWrap{width:1150px;overflow:hidden;position:absolute;}
