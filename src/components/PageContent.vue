@@ -14,7 +14,7 @@
 				<div class="main">
 					<div class="focusBox2">
 						<ul class="pic">
-							<li v-for="index in 6"><a href="#"><img :src="tzgg[index+1] && tzgg[index+1].pic"/></a></li>
+							<li v-for="index in 6"><a href=""><img :src="tzgg[index+1] && tzgg[index+1].pic"/></a></li>
 						</ul>
 						<div class="txt-bg"></div>
 						<ul class="num">
@@ -33,7 +33,7 @@
 					</div>
 					<div class="news_list">
 						<ul>
-							<li v-for="index in 6">&gt;<a href="">{{tzgg[index+1] && tzgg[index+1].title}}</a><span>[{{tzgg[index+1] && tzgg[index+1].publicTime | normalTime}}]</span></li>
+							<li v-for="(item,index) in tzgg" v-if="index > 0 && index < 7">&gt;<a :href="`/index/catetory/${item.catetoryId}/article/${item.articleId}`">{{item.title}}</a><span>[{{item.publicTime | normalTime}}]</span></li>
 						</ul>
 					</div>
 				</div>

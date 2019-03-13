@@ -1,10 +1,12 @@
-# vue-web
+# vue-web-portal(使用vue写的门户网站，纯前端)
+
+> 当初练手vue时写的，适合刚入门vue的同学参考，熟悉一些vue的使用方法，包括vue-router,vuex,axios都有涉及。
+
 
 > 一个使用vue写的门户页面，数据使用.date文件进行模拟。
 
 >使用到的技术有vue+vue-router+vuex+axios+element+jQuery+SuperSlider
 
->没有后台，数据比较死板，很多js要处理这些数据显得有点臃肿
 
 ## Build Setup
 
@@ -18,5 +20,3 @@ npm run dev
 # build for production with minification
 npm run build
 ```
-
-For detailed explanation on how things work, consult the [docs for vue-loader](http://vuejs.github.io/vue-loader).
